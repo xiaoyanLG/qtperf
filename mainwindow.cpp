@@ -34,9 +34,9 @@ void MainWindow::runButtonPressed() {
     }
     ui->tabMain->setCurrentIndex(0);
 #if QT_VERSION > QT_VERSION_CHECK(4, 8, 7)
-    this->grab().save(QString("/tmp/screenShots/qtperf-%1.png").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd-hh:mm:ss")));
+    this->grab().save(QString("/tmp/screenShots/qtperf-%1.png").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd(hh-mm-ss)")));
 #else
-    QPixmap::grabWidget(this).save(QString("/tmp/screenShots/qtperf-%1.png").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd-hh:mm:ss")));
+    QPixmap::grabWidget(this).save(QString("/tmp/screenShots/qtperf-%1.png").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd(hh-mm-ss)")));
 #endif
 }
 
