@@ -1,6 +1,7 @@
 ﻿#include <QApplication>
 #include "mainwindow.h"
 #include "time.h"
+#include <QTimer>
 
 int main(int argc, char *argv[])
 {
@@ -9,12 +10,16 @@ int main(int argc, char *argv[])
     qsrand(time(NULL));
     setbuf(stdout,NULL);
 
-    if (argc > 1) {
-        w.showFullScreen();
-    } else {
-        w.move(100, 50);
-        w.resize(660, 400);
-        w.show();
+    w.move(100, 50);
+    w.resize(660, 400);
+    w.show();
+
+    while (--argc) {
+        if (QString(argv[argc]) == "-f") {
+            w.showFullScreen();
+        } else if (QString(argv[argc]) == "-s") {
+            QTimer::singleShot(3000, &w, SLOT(runButtonPressed()));
+        }
     }
     return a.exec();
 }
